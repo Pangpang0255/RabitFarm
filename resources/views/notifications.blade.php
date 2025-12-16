@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testimonials - RabitFarm</title>
+    <title>Testimoni - RabitFarm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { 
@@ -181,10 +181,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/services">Our Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/notifications">Testimonials</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/forum">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">Tentang Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/services">Layanan Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/notifications">Testimoni</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/forum">Forum Komunitas</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                                 Dashboard
@@ -197,7 +197,7 @@
                                 <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="/reports">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/reports">Kontak</a></li>
                     </ul>
                 </div>
             </div>
@@ -205,16 +205,16 @@
     </header>
 
     <div class="hero-testimonials">
-        <h1>Testimonials</h1>
+        <h1>Testimoni</h1>
         <div class="breadcrumb-custom">
-            <a href="/">Home</a> <span>/</span> <span>Testimonials</span>
+            <a href="/">Home</a> <span>/</span> <span>Testimoni</span>
         </div>
     </div>
 
     <section class="testimonials-section">
         <div class="container">
             <div class="testimonials-header">
-                <h3>TESTIMONIALS</h3>
+                <h3>TESTIMONI</h3>
                 <h2>Testimoni Peternak Kelinci Kami</h2>
             </div>
 

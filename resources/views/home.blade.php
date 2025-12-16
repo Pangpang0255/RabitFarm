@@ -28,7 +28,7 @@
         .hero-section {
             position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1920&q=80') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('images/rabbits/rabit1.jpg') }}') center/cover;
             color: white;
             display: flex;
             align-items: center;
@@ -394,10 +394,10 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/services">Our Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/notifications">Testimonials</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/forum">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Layanan Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/notifications">Testimoni</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/forum">Forum Komunitas</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                             Dashboard
@@ -410,14 +410,14 @@
                             <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="/reports">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/reports">Kontak</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
 
-<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+<div id="heroCarousel" class="carousel slide">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
@@ -427,11 +427,12 @@
         <div class="carousel-item active">
             <div class="hero-section">
                 <div class="hero-content">
-                    <div class="hero-tag">WELCOME TO RabitFarm</div>
-                    <h1><span class="highlight">Agriculture</span> from a<br>Fresh Perspective</h1>
-                    <p>There are numerous variations of passages available, but most have been modified in some way by the addition of humor or randomised words.</p>
-                    <a href="/dashboard" class="btn-hero">
-                        Contact us
+                    <div class="hero-tag">WELCOME TO RABITFARM</div>
+                    <h1><span class="highlight">Monitoring</span> Peternakan<br>Kelinci Secara Real-Time</h1>
+                    <p>Pantau kondisi kandang, pakan, kesehatan, dan populasi kelinci
+                        dalam satu sistem terintegrasi untuk meningkatkan produktivitas peternakan.</p>
+                    <a href="/reports" class="btn-hero">
+                        Hubungi Kami
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -440,9 +441,9 @@
             </div>
         </div>
         <div class="carousel-item">
-            <div class="hero-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1920&q=80') center/cover;">
+            <div class="hero-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('images/rabbits/rabit2.jpg') }}') center/cover;">
                 <div class="hero-content">
-                    <div class="hero-tag">WELCOME TO AGRICULTURE</div>
+                    <div class="hero-tag">WELCOME TO RABITFARM</div>
                     <h1><span class="highlight">Peternakan</span> Kelinci<br>Modern & Organik</h1>
                     <p>Kelinci sehat dengan pakan organik terbaik untuk hasil maksimal dan berkelanjutan</p>
                     <a href="/dashboard" class="btn-hero">
@@ -455,7 +456,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <div class="hero-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80') center/cover;">
+            <div class="hero-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('images/rabbits/rabit3.jpg') }}') center/cover;">
                 <div class="hero-content">
                     <div class="hero-tag">JOIN OUR COMMUNITY</div>
                     <h1><span class="highlight">Bergabung</span> dengan<br>Komunitas Peternak</h1>
@@ -558,12 +559,6 @@
             </div>
         </div>
     </div>
-
-    <div class="text-center my-5">
-        <h3>Siap Meningkatkan Produktivitas Peternakan Anda?</h3>
-        <p class="mb-4">Bergabunglah dengan ribuan peternak yang telah mempercayai RabitFarm</p>
-        <a href="/dashboard" class="btn btn-green btn-lg">Mulai Gratis</a>
-    </div>
 </div>
 
 <!-- Who We Are Section -->
@@ -577,7 +572,7 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="who-image">
-                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80" alt="Agriculture Farm">
+                    <img src="{{ asset('images/rabbits/rabit1.jpg') }}" alt="Agriculture Farm">
                     <div class="who-badge">
                         <span class="number">5 +</span>
                         <span class="text">Fitur <br>Unggulan</span>
@@ -852,7 +847,7 @@
                 <ul>
                     <li><a href="/about">Tentang Kami</a></li>
                     <li><a href="/services">Layanan</a></li>
-                    <li><a href="/forum">Blog</a></li>
+                    <li><a href="/forum">Forum Komunitas</a></li>
                     <li><a href="/reports">Kontak</a></li>
                 </ul>
             </div>
@@ -881,8 +876,8 @@
                 <h5>Hubungi Kami</h5>
                 <ul>
                     <li>📧 info@rabitfarm.com</li>
-                    <li>📞 (021) 123-4567</li>
-                    <li>📍 Jakarta, Indonesia</li>
+                    <li>📞 (+62) 885-86-890</li>
+                    <li>📍 Semarang, Indonesia</li>
                 </ul>
             </div>
         </div>
@@ -894,5 +889,22 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var hero = document.getElementById('heroCarousel');
+    if (hero) {
+        var carousel = new bootstrap.Carousel(hero, {
+            interval: false,
+            pause: false
+        });
+
+        // Geser ke kanan setiap 4 detik
+        setInterval(function() {
+            carousel.prev();
+        }, 4000);
+    }
+});
+</script>
+
 </body>
 </html>

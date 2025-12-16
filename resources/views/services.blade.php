@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - RabitFarm</title>
+    <title>Layanan Kami - RabitFarm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { 
@@ -78,18 +78,32 @@
             padding: 40px 30px;
             border-radius: 10px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             transition: all 0.3s;
             border: 1px solid #e0e0e0;
             position: relative;
-            height: 320px;
+            height: auto; /* allow card to size to content now that icons are removed */
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: center;
+            gap: 20px; /* spacing between title and description */
         }
         .service-card:hover {
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transform: translateY(-5px);
+        }
+
+        /* Make columns flex containers and ensure all service cards in a row have equal height */
+        .services-section .row > [class*="col-"] {
+            display: flex;
+            align-items: stretch;
+        }
+        .services-section .row > [class*="col-"] .service-card {
+            flex: 1 1 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .service-number {
             position: absolute;
@@ -104,14 +118,21 @@
             color: #228B22;
             margin-bottom: 20px;
         }
+        .service-icon img {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            display: inline-block;
+        }
         .service-card h4 {
             color: #333;
             font-size: 22px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         .service-card p {
             color: #666;
-            line-height: 1.6;
+            line-height: 1.8;
+            margin-bottom: 0;
         }
         .scroll-top {
             position: fixed;
@@ -147,10 +168,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/services">Our Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/notifications">Testimonials</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/forum">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">Tentang Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/services">Layanan Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/notifications">Testimoni</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/forum">Forum Komunitas</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                                 Dashboard
@@ -163,7 +184,7 @@
                                 <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="/reports">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/reports">Kontak</a></li>
                     </ul>
                 </div>
             </div>
@@ -171,24 +192,24 @@
     </header>
 
     <div class="hero-services">
-        <h1>Services</h1>
+        <h1>Layanan Kami</h1>
         <div class="breadcrumb-custom">
-            <a href="/">Home</a> <span>/</span> <span>Services</span>
+            <a href="/">Home</a> <span>/</span> <span>Layanan Kami</span>
         </div>
     </div>
 
     <section class="services-section">
         <div class="container">
             <div class="services-header">
-                <h3>SERVICES</h3>
+                <h3>LAYANAN KAMI</h3>
                 <h2>Layanan Peternakan Kelinci Terlengkap</h2>
             </div>
 
-            <div class="row">
+            <div class="row g-4 mb-5">
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card">
                         <span class="service-number">01</span>
-                        <div class="service-icon">🌱</div>
+                    
                         <h4>Pemilihan Bibit</h4>
                         <p>Membantu Anda memilih bibit kelinci berkualitas unggul dengan genetika terbaik untuk hasil optimal</p>
                     </div>
@@ -196,7 +217,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card">
                         <span class="service-number">02</span>
-                        <div class="service-icon">🥬</div>
+                        
                         <h4>Manajemen Pakan</h4>
                         <p>Konsultasi nutrisi lengkap dan pengaturan pakan organik berkualitas tinggi untuk kelinci sehat</p>
                     </div>
@@ -204,7 +225,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card">
                         <span class="service-number">03</span>
-                        <div class="service-icon">🏠</div>
+                        
                         <h4>Kandang Modern</h4>
                         <p>Desain dan pembangunan kandang kelinci yang higienis, nyaman, dan sesuai standar peternakan</p>
                     </div>
@@ -212,18 +233,19 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card">
                         <span class="service-number">04</span>
-                        <div class="service-icon">📊</div>
+                        
                         <h4>Monitoring Digital</h4>
                         <p>Sistem monitoring real-time untuk kesehatan, pertumbuhan, dan produktivitas kelinci Anda</p>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+
+            <div class="row g-4 mb-5">
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card">
                         <span class="service-number">05</span>
-                        <div class="service-icon">💉</div>
+                        
                         <h4>Kesehatan Kelinci</h4>
                         <p>Program vaksinasi dan perawatan kesehatan rutin untuk mencegah penyakit pada kelinci</p>
                     </div>
@@ -231,7 +253,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card">
                         <span class="service-number">06</span>
-                        <div class="service-icon">👶</div>
+                        
                         <h4>Breeding Program</h4>
                         <p>Manajemen perkawinan dan reproduksi kelinci untuk meningkatkan kualitas dan kuantitas</p>
                     </div>
@@ -239,7 +261,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card">
                         <span class="service-number">07</span>
-                        <div class="service-icon">💧</div>
+                        
                         <h4>Sistem Air Bersih</h4>
                         <p>Instalasi sistem air minum otomatis yang higienis untuk memastikan kelinci tetap terhidrasi</p>
                     </div>
@@ -247,7 +269,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card">
                         <span class="service-number">08</span>
-                        <div class="service-icon">📦</div>
+                        
                         <h4>Pemasaran Produk</h4>
                         <p>Bantuan pemasaran dan distribusi hasil peternakan kelinci ke pasar yang tepat</p>
                     </div>
