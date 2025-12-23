@@ -7,6 +7,25 @@
         <div>
             <h2 class="fw-bold mb-1">Database Ternak</h2>
             <p class="text-muted mb-0">Pemilihan Bibit & Inventory - KTP Setiap Kelinci</p>
+            @if($search || $gender || $breed || $healthStatus)
+            <div class="mt-2">
+                <small class="text-muted">
+                    <i class="fas fa-filter"></i> Filter aktif: 
+                    @if($search)
+                        <span class="badge bg-info">Pencarian: {{ $search }}</span>
+                    @endif
+                    @if($gender)
+                        <span class="badge bg-primary">{{ ucfirst($gender) }}</span>
+                    @endif
+                    @if($breed)
+                        <span class="badge bg-success">{{ $breed }}</span>
+                    @endif
+                    @if($healthStatus)
+                        <span class="badge bg-warning text-dark">{{ ucfirst($healthStatus) }}</span>
+                    @endif
+                </small>
+            </div>
+            @endif
         </div>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRabbitModal">
             <i class="fas fa-plus me-2"></i>Tambah Kelinci
@@ -16,46 +35,54 @@
     <!-- Filter & Search -->
     <div class="card border-0 shadow-sm mb-4">
         <div class="card-body">
-            <div class="row g-3">
-                <div class="col-md-3">
-                    <label class="form-label">Cari ID/No. Telinga</label>
-                    <input type="text" class="form-control" placeholder="Cari kelinci...">
+            <form method="GET" action="{{ route('database-ternak') }}">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Cari ID/No. Telinga</label>
+                        <input type="text" class="form-control" name="search" placeholder="Cari kelinci..." value="{{ $search ?? '' }}">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Jenis Kelamin</label>
+                        <select class="form-select" name="gender">
+                            <option value="">Semua</option>
+                            <option value="jantan" {{ ($gender ?? '') == 'jantan' ? 'selected' : '' }}>Jantan</option>
+                            <option value="betina" {{ ($gender ?? '') == 'betina' ? 'selected' : '' }}>Betina</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Ras/Jenis</label>
+                        <select class="form-select" name="breed">
+                            <option value="">Semua</option>
+                            <option value="Rex" {{ ($breed ?? '') == 'Rex' ? 'selected' : '' }}>Rex</option>
+                            <option value="New Zealand" {{ ($breed ?? '') == 'New Zealand' ? 'selected' : '' }}>New Zealand</option>
+                            <option value="Flemish Giant" {{ ($breed ?? '') == 'Flemish Giant' ? 'selected' : '' }}>Flemish Giant</option>
+                            <option value="Lokal" {{ ($breed ?? '') == 'Lokal' ? 'selected' : '' }}>Lokal</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Status Kesehatan</label>
+                        <select class="form-select" name="health_status">
+                            <option value="">Semua</option>
+                            <option value="sehat" {{ ($healthStatus ?? '') == 'sehat' ? 'selected' : '' }}>Sehat</option>
+                            <option value="sakit" {{ ($healthStatus ?? '') == 'sakit' ? 'selected' : '' }}>Sakit</option>
+                            <option value="karantina" {{ ($healthStatus ?? '') == 'karantina' ? 'selected' : '' }}>Karantina</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">&nbsp;</label>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-success flex-grow-1">
+                                <i class="fas fa-search me-2"></i>Filter
+                            </button>
+                            @if($search || $gender || $breed || $healthStatus)
+                            <a href="{{ route('database-ternak') }}" class="btn btn-secondary">
+                                Reset
+                            </a>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <label class="form-label">Jenis Kelamin</label>
-                    <select class="form-select">
-                        <option value="">Semua</option>
-                        <option value="jantan">Jantan</option>
-                        <option value="betina">Betina</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label">Ras/Jenis</label>
-                    <select class="form-select">
-                        <option value="">Semua</option>
-                        <option value="rex">Rex</option>
-                        <option value="nz">New Zealand</option>
-                        <option value="fg">Flemish Giant</option>
-                        <option value="lokal">Lokal</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label">Status</label>
-                    <select class="form-select">
-                        <option value="">Semua</option>
-                        <option value="aktif">Aktif</option>
-                        <option value="terjual">Terjual</option>
-                        <option value="mati">Mati</option>
-                        <option value="afkir">Afkir</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label class="form-label">&nbsp;</label>
-                    <button class="btn btn-success w-100">
-                        <i class="fas fa-search me-2"></i>Filter
-                    </button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -79,192 +106,67 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse($rabbits as $rabbit)
                         <tr>
-                            <td><strong>ID-M012</strong></td>
-                            <td><i class="fas fa-mars text-info me-1"></i>Jantan</td>
-                            <td><span class="badge bg-primary">New Zealand</span></td>
-                            <td>15 Jan 2023</td>
-                            <td>1 tahun 11 bulan</td>
-                            <td>4.2</td>
-                            <td><span class="badge bg-success">Ternak Sendiri</span></td>
+                            <td><strong>{{ $rabbit->code }}</strong></td>
                             <td>
-                                <small>Ayah: ID-M001<br>Ibu: ID-F003</small>
+                                @if($rabbit->gender == 'jantan')
+                                <i class="fas fa-mars text-info me-1"></i>Jantan
+                                @else
+                                <i class="fas fa-venus text-danger me-1"></i>Betina
+                                @endif
                             </td>
-                            <td><span class="badge bg-success">Aktif</span></td>
+                            <td><span class="badge bg-primary">{{ $rabbit->breed }}</span></td>
+                            <td>{{ $rabbit->birth_date->format('d M Y') }}</td>
+                            <td>{{ $rabbit->age }} bulan</td>
+                            <td>{{ $rabbit->weight ?? '-' }} kg</td>
+                            <td><span class="badge bg-success">Ternak</span></td>
                             <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">
+                                <small class="text-muted">-</small>
+                            </td>
+                            <td>
+                                @if($rabbit->health_status == 'sehat')
+                                <span class="badge bg-success">Sehat</span>
+                                @elseif($rabbit->health_status == 'sakit')
+                                <span class="badge bg-danger">Sakit</span>
+                                @else
+                                <span class="badge bg-warning">Karantina</span>
+                                @endif
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-info">
                                     <i class="fas fa-eye"></i>
                                 </button>
                                 <button class="btn btn-sm btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </button>
+                                <form action="{{ route('database-ternak.destroy', $rabbit->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus?')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
+                        @empty
                         <tr>
-                            <td><strong>ID-F024</strong></td>
-                            <td><i class="fas fa-venus text-danger me-1"></i>Betina</td>
-                            <td><span class="badge bg-danger">Rex</span></td>
-                            <td>22 Mar 2023</td>
-                            <td>1 tahun 9 bulan</td>
-                            <td>3.8</td>
-                            <td><span class="badge bg-warning text-dark">Beli Luar</span></td>
-                            <td>
-                                <small class="text-muted">Tidak diketahui</small>
-                            </td>
-                            <td><span class="badge bg-success">Aktif</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
+                            <td colspan="10" class="text-center py-4">
+                                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                <p class="text-muted">Belum ada data kelinci. Klik "Tambah Kelinci" untuk mulai.</p>
                             </td>
                         </tr>
-                        <tr>
-                            <td><strong>ID-F038</strong></td>
-                            <td><i class="fas fa-venus text-danger me-1"></i>Betina</td>
-                            <td><span class="badge bg-secondary">Lokal</span></td>
-                            <td>10 Jun 2023</td>
-                            <td>1 tahun 6 bulan</td>
-                            <td>3.5</td>
-                            <td><span class="badge bg-success">Ternak Sendiri</span></td>
-                            <td>
-                                <small>Ayah: ID-M015<br>Ibu: ID-F020</small>
-                            </td>
-                            <td><span class="badge bg-success">Aktif</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>ID-M015</strong></td>
-                            <td><i class="fas fa-mars text-info me-1"></i>Jantan</td>
-                            <td><span class="badge bg-danger">Rex</span></td>
-                            <td>05 Feb 2023</td>
-                            <td>1 tahun 10 bulan</td>
-                            <td>4.5</td>
-                            <td><span class="badge bg-success">Ternak Sendiri</span></td>
-                            <td>
-                                <small>Ayah: ID-M002<br>Ibu: ID-F005</small>
-                            </td>
-                            <td><span class="badge bg-success">Aktif</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>ID-F041</strong></td>
-                            <td><i class="fas fa-venus text-danger me-1"></i>Betina</td>
-                            <td><span class="badge bg-primary">New Zealand</span></td>
-                            <td>18 Apr 2023</td>
-                            <td>1 tahun 8 bulan</td>
-                            <td>4.0</td>
-                            <td><span class="badge bg-warning text-dark">Beli Luar</span></td>
-                            <td>
-                                <small class="text-muted">Tidak diketahui</small>
-                            </td>
-                            <td><span class="badge bg-success">Aktif</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>ID-F019</strong></td>
-                            <td><i class="fas fa-venus text-danger me-1"></i>Betina</td>
-                            <td><span class="badge bg-info">Flemish Giant</span></td>
-                            <td>08 Dec 2022</td>
-                            <td>2 tahun</td>
-                            <td>5.2</td>
-                            <td><span class="badge bg-success">Ternak Sendiri</span></td>
-                            <td>
-                                <small>Ayah: ID-M008<br>Ibu: ID-F010</small>
-                            </td>
-                            <td><span class="badge bg-success">Aktif</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>ID-M007</strong></td>
-                            <td><i class="fas fa-mars text-info me-1"></i>Jantan</td>
-                            <td><span class="badge bg-secondary">Lokal</span></td>
-                            <td>25 Sep 2023</td>
-                            <td>1 tahun 3 bulan</td>
-                            <td>3.2</td>
-                            <td><span class="badge bg-success">Ternak Sendiri</span></td>
-                            <td>
-                                <small>Ayah: ID-M012<br>Ibu: ID-F024</small>
-                            </td>
-                            <td><span class="badge bg-warning text-dark">Terjual</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>ID-F033</strong></td>
-                            <td><i class="fas fa-venus text-danger me-1"></i>Betina</td>
-                            <td><span class="badge bg-danger">Rex</span></td>
-                            <td>14 May 2023</td>
-                            <td>1 tahun 7 bulan</td>
-                            <td>3.9</td>
-                            <td><span class="badge bg-success">Ternak Sendiri</span></td>
-                            <td>
-                                <small>Ayah: ID-M015<br>Ibu: ID-F024</small>
-                            </td>
-                            <td><span class="badge bg-success">Aktif</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
             
             <!-- Pagination -->
+            @if($rabbits->hasPages())
             <nav class="mt-4">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">Previous</a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
+                {{ $rabbits->links('pagination::bootstrap-5') }}
             </nav>
+            @endif
         </div>
     </div>
 </div>

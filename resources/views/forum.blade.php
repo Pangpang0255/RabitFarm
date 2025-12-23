@@ -99,6 +99,364 @@
         font-weight: 500;
         transition: all 0.3s;
     }
+    
+    /* Forum Styles */
+    .forum-section {
+        padding: 60px 0;
+        background: #f8f9fa;
+    }
+    .forum-header {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin-bottom: 30px;
+    }
+    .forum-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+    .forum-subtitle {
+        color: #7f8c8d;
+        font-size: 16px;
+    }
+    .btn-new-post {
+        background: linear-gradient(135deg, #228B22, #32CD32);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .btn-new-post:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(34,139,34,0.3);
+    }
+    .post-card {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        transition: all 0.3s;
+    }
+    .post-card:hover {
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    .post-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 15px;
+    }
+    .post-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .author-avatar {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, #228B22, #32CD32);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .author-info h5 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+    .author-info span {
+        font-size: 13px;
+        color: #95a5a6;
+    }
+    .post-actions {
+        display: flex;
+        gap: 8px;
+    }
+    .btn-action {
+        background: transparent;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .btn-edit {
+        color: #3498db;
+    }
+    .btn-edit:hover {
+        background: #e3f2fd;
+    }
+    .btn-delete {
+        color: #e74c3c;
+    }
+    .btn-delete:hover {
+        background: #fadbd8;
+    }
+    .post-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 12px;
+    }
+    .post-content {
+        color: #555;
+        line-height: 1.7;
+        margin-bottom: 15px;
+    }
+    .post-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 15px;
+        border-top: 1px solid #ecf0f1;
+    }
+    .post-stats {
+        display: flex;
+        gap: 20px;
+        font-size: 14px;
+        color: #7f8c8d;
+    }
+    .btn-reply {
+        background: transparent;
+        border: 1px solid #228B22;
+        color: #228B22;
+        padding: 8px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13px;
+        transition: all 0.3s;
+    }
+    .btn-reply:hover {
+        background: #228B22;
+        color: white;
+    }
+    .replies-section {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 2px solid #ecf0f1;
+    }
+    .reply-card {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        border-left: 3px solid #228B22;
+    }
+    .reply-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .reply-author {
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 14px;
+    }
+    .reply-time {
+        font-size: 12px;
+        color: #95a5a6;
+    }
+    .reply-content {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+    }
+    .modal.active {
+        display: flex;
+    }
+    .modal-content {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        max-width: 600px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .modal-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #2c3e50;
+    }
+    .btn-close {
+        background: transparent;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #7f8c8d;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-label {
+        display: block;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+    }
+    .form-control:focus {
+        outline: none;
+        border-color: #228B22;
+    }
+    textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+    }
+    .btn-submit {
+        background: linear-gradient(135deg, #228B22, #32CD32);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        transition: all 0.3s;
+    }
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(34,139,34,0.3);
+    }
+    .btn-cancel {
+        background: #95a5a6;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .post-interactions {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        padding-top: 15px;
+    }
+    .interaction-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #555;
+        transition: all 0.3s;
+    }
+    .interaction-btn:hover {
+        background: #f0f0f0;
+    }
+    .interaction-btn i {
+        font-size: 18px;
+    }
+    .interaction-btn.liked {
+        color: #228B22;
+    }
+    .interaction-btn.liked i {
+        color: #228B22;
+    }
+    .interaction-btn.disliked {
+        color: #e74c3c;
+    }
+    .show-replies-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #1976d2;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 8px 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 20px;
+        transition: all 0.3s;
+    }
+    .show-replies-btn:hover {
+        background: #e3f2fd;
+    }
+    .show-replies-btn i {
+        font-size: 16px;
+        transition: transform 0.3s;
+    }
+    .show-replies-btn.active i {
+        transform: rotate(180deg);
+    }
+    .reply-actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+    .reply-like-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 8px;
+        border-radius: 15px;
+        font-size: 12px;
+        color: #555;
+        transition: all 0.3s;
+    }
+    .reply-like-btn:hover {
+        background: #f0f0f0;
+    }
+    .reply-like-btn.liked {
+        color: #228B22;
+    }
+    .reply-like-btn i {
+        font-size: 14px;
+    }
 </style>
 
 <div class="social-community-section">
@@ -167,27 +525,586 @@
     </div>
 </div>
 
-<div class="row mt-5">
-    <div class="col-md-12">
-        <h2 class="mb-4">Forum Komunitas</h2>
-        <p>Diskusi dengan peternak lain.</p>
-        <div>
-            <h3>Postingan Terbaru</h3>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Tips Merawat Kelinci</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Oleh: User1</h6>
-                    <p class="card-text">Pastikan kandang bersih...</p>
+<!-- Forum Community Section -->
+<div class="forum-section">
+    <div class="container">
+        <div class="forum-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="forum-title">Forum Komunitas</h2>
+                    <p class="forum-subtitle">Diskusi dengan peternak lain dan berbagi pengalaman</p>
+                </div>
+                <button class="btn-new-post" onclick="openNewPostModal()">
+                    <i class="fas fa-plus"></i> Buat Postingan Baru
+                </button>
+            </div>
+        </div>
+
+        <div id="postsContainer">
+            <!-- Post 1 -->
+            <div class="post-card" data-post-id="1">
+                <div class="post-header">
+                    <div class="post-author">
+                        <div class="author-avatar">U1</div>
+                        <div class="author-info">
+                            <h5>User1</h5>
+                            <span>2 jam yang lalu</span>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="btn-action btn-edit" onclick="editPost(1)">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn-action btn-delete" onclick="deletePost(1)">
+                            <i class="fas fa-trash"></i> Hapus
+                        </button>
+                    </div>
+                </div>
+                <h3 class="post-title">Tips Merawat Kelinci di Musim Hujan</h3>
+                <p class="post-content">Pastikan kandang selalu bersih dan kering. Gunakan alas yang dapat menyerap air dengan baik. Jangan lupa untuk memberikan vitamin tambahan agar kelinci tetap sehat dan tidak mudah sakit saat musim hujan.</p>
+                
+                <div class="post-interactions">
+                    <button class="interaction-btn like-btn" onclick="likePost(1, this)">
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="like-count">181</span>
+                    </button>
+                    <button class="interaction-btn dislike-btn" onclick="dislikePost(1, this)">
+                        <i class="far fa-thumbs-down"></i>
+                    </button>
+                    <button class="interaction-btn" onclick="openReplyForm(1)">
+                        <i class="far fa-comment"></i>
+                        <span>Balas</span>
+                    </button>
+                    <button class="show-replies-btn" onclick="toggleReplies(1)">
+                        <i class="fas fa-chevron-down"></i>
+                        <span class="reply-count">3 balasan</span>
+                    </button>
+                </div>
+                
+                <div class="replies-section" id="replies-1" style="display: none;">
+                    <div class="reply-card">
+                        <div class="reply-header">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div class="author-avatar" style="width: 30px; height: 30px; font-size: 12px;">U3</div>
+                                <div>
+                                    <span class="reply-author">User3</span>
+                                    <span class="reply-time"> · 1 jam yang lalu</span>
+                                </div>
+                            </div>
+                            <div class="reply-actions">
+                                <button class="reply-like-btn" onclick="likeReply(this)">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span>24</span>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="reply-content">Terima kasih tipsnya! Sangat membantu sekali.</p>
+                    </div>
+                    <div class="reply-card">
+                        <div class="reply-header">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div class="author-avatar" style="width: 30px; height: 30px; font-size: 12px;">U4</div>
+                                <div>
+                                    <span class="reply-author">User4</span>
+                                    <span class="reply-time"> · 30 menit yang lalu</span>
+                                </div>
+                            </div>
+                            <div class="reply-actions">
+                                <button class="reply-like-btn" onclick="likeReply(this)">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span>12</span>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="reply-content">Saya biasanya tambahkan jerami kering agar lebih hangat.</p>
+                    </div>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <textarea class="form-control" placeholder="Tulis balasan Anda..." id="reply-input-1"></textarea>
+                        <button class="btn-submit" style="margin-top: 10px;" onclick="addReply(1)">Kirim Balasan</button>
+                    </div>
                 </div>
             </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Pakan Terbaik</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Oleh: User2</h6>
-                    <p class="card-text">Gunakan pakan organik...</p>
+
+            <!-- Post 2 -->
+            <div class="post-card" data-post-id="2">
+                <div class="post-header">
+                    <div class="post-author">
+                        <div class="author-avatar">U2</div>
+                        <div class="author-info">
+                            <h5>User2</h5>
+                            <span>5 jam yang lalu</span>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="btn-action btn-edit" onclick="editPost(2)">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn-action btn-delete" onclick="deletePost(2)">
+                            <i class="fas fa-trash"></i> Hapus
+                        </button>
+                    </div>
+                </div>
+                <h3 class="post-title">Rekomendasi Pakan Organik untuk Kelinci</h3>
+                <p class="post-content">Saya sudah mencoba berbagai jenis pakan organik untuk kelinci. Yang terbaik menurut saya adalah campuran rumput timothy, wortel, dan sayuran hijau. Kelinci saya jadi lebih sehat dan bulunya lebih mengkilap!</p>
+                
+                <div class="post-interactions">
+                    <button class="interaction-btn like-btn" onclick="likePost(2, this)">
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="like-count">245</span>
+                    </button>
+                    <button class="interaction-btn dislike-btn" onclick="dislikePost(2, this)">
+                        <i class="far fa-thumbs-down"></i>
+                    </button>
+                    <button class="interaction-btn" onclick="openReplyForm(2)">
+                        <i class="far fa-comment"></i>
+                        <span>Balas</span>
+                    </button>
+                    <button class="show-replies-btn" onclick="toggleReplies(2)">
+                        <i class="fas fa-chevron-down"></i>
+                        <span class="reply-count">5 balasan</span>
+                    </button>
+                </div>
+                
+                <div class="replies-section" id="replies-2" style="display: none;">
+                    <div class="reply-card">
+                        <div class="reply-header">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div class="author-avatar" style="width: 30px; height: 30px; font-size: 12px;">U5</div>
+                                <div>
+                                    <span class="reply-author">User5</span>
+                                    <span class="reply-time"> · 3 jam yang lalu</span>
+                                </div>
+                            </div>
+                            <div class="reply-actions">
+                                <button class="reply-like-btn" onclick="likeReply(this)">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span>15</span>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="reply-content">Dimana bisa beli rumput timothy nya?</p>
+                    </div>
+                    <div class="reply-card">
+                        <div class="reply-header">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div class="author-avatar" style="width: 30px; height: 30px; font-size: 12px;">U2</div>
+                                <div>
+                                    <span class="reply-author">User2</span>
+                                    <span class="reply-time"> · 2 jam yang lalu</span>
+                                </div>
+                            </div>
+                            <div class="reply-actions">
+                                <button class="reply-like-btn" onclick="likeReply(this)">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span>8</span>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="reply-content">@User5 Bisa beli di toko online atau marketplace. Banyak kok yang jual.</p>
+                    </div>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <textarea class="form-control" placeholder="Tulis balasan Anda..." id="reply-input-2"></textarea>
+                        <button class="btn-submit" style="margin-top: 10px;" onclick="addReply(2)">Kirim Balasan</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post 3 -->
+            <div class="post-card" data-post-id="3">
+                <div class="post-header">
+                    <div class="post-author">
+                        <div class="author-avatar">U6</div>
+                        <div class="author-info">
+                            <h5>User6</h5>
+                            <span>1 hari yang lalu</span>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="btn-action btn-edit" onclick="editPost(3)">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn-action btn-delete" onclick="deletePost(3)">
+                            <i class="fas fa-trash"></i> Hapus
+                        </button>
+                    </div>
+                </div>
+                <h3 class="post-title">Cara Breeding Kelinci untuk Pemula</h3>
+                <p class="post-content">Bagi yang baru mau mulai breeding kelinci, pastikan kelinci sudah cukup umur (minimal 6 bulan). Pilih indukan yang sehat dan tidak ada cacat genetik. Siapkan kandang khusus untuk breeding yang aman dan nyaman.</p>
+                
+                <div class="post-interactions">
+                    <button class="interaction-btn like-btn" onclick="likePost(3, this)">
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="like-count">320</span>
+                    </button>
+                    <button class="interaction-btn dislike-btn" onclick="dislikePost(3, this)">
+                        <i class="far fa-thumbs-down"></i>
+                    </button>
+                    <button class="interaction-btn" onclick="openReplyForm(3)">
+                        <i class="far fa-comment"></i>
+                        <span>Balas</span>
+                    </button>
+                    <button class="show-replies-btn" onclick="toggleReplies(3)">
+                        <i class="fas fa-chevron-down"></i>
+                        <span class="reply-count">8 balasan</span>
+                    </button>
+                </div>
+                
+                <div class="replies-section" id="replies-3" style="display: none;">
+                    <div class="reply-card">
+                        <div class="reply-header">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div class="author-avatar" style="width: 30px; height: 30px; font-size: 12px;">U7</div>
+                                <div>
+                                    <span class="reply-author">User7</span>
+                                    <span class="reply-time"> · 18 jam yang lalu</span>
+                                </div>
+                            </div>
+                            <div class="reply-actions">
+                                <button class="reply-like-btn" onclick="likeReply(this)">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span>45</span>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="reply-content">Sangat informatif! Saya baru mau mulai breeding nih.</p>
+                    </div>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <textarea class="form-control" placeholder="Tulis balasan Anda..." id="reply-input-3"></textarea>
+                        <button class="btn-submit" style="margin-top: 10px;" onclick="addReply(3)">Kirim Balasan</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal for New Post -->
+<div class="modal" id="newPostModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Buat Postingan Baru</h3>
+            <button class="btn-close" onclick="closeNewPostModal()">&times;</button>
+        </div>
+        <form id="newPostForm">
+            <div class="form-group">
+                <label class="form-label">Judul Postingan</label>
+                <input type="text" class="form-control" id="postTitle" placeholder="Masukkan judul postingan..." required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Isi Postingan</label>
+                <textarea class="form-control" id="postContent" placeholder="Tulis isi postingan Anda..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Posting</button>
+            <button type="button" class="btn-cancel" onclick="closeNewPostModal()">Batal</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal for Edit Post -->
+<div class="modal" id="editPostModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Edit Postingan</h3>
+            <button class="btn-close" onclick="closeEditPostModal()">&times;</button>
+        </div>
+        <form id="editPostForm">
+            <input type="hidden" id="editPostId">
+            <div class="form-group">
+                <label class="form-label">Judul Postingan</label>
+                <input type="text" class="form-control" id="editPostTitle" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Isi Postingan</label>
+                <textarea class="form-control" id="editPostContent" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Simpan Perubahan</button>
+            <button type="button" class="btn-cancel" onclick="closeEditPostModal()">Batal</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Like Post
+    function likePost(postId, button) {
+        const likeBtn = button;
+        const likeCountSpan = likeBtn.querySelector('.like-count');
+        const dislikeBtn = likeBtn.parentElement.querySelector('.dislike-btn');
+        let count = parseInt(likeCountSpan.textContent);
+        
+        if (likeBtn.classList.contains('liked')) {
+            // Unlike
+            likeBtn.classList.remove('liked');
+            likeBtn.querySelector('i').className = 'far fa-thumbs-up';
+            likeCountSpan.textContent = count - 1;
+        } else {
+            // Like
+            likeBtn.classList.add('liked');
+            likeBtn.querySelector('i').className = 'fas fa-thumbs-up';
+            likeCountSpan.textContent = count + 1;
+            
+            // Remove dislike if active
+            if (dislikeBtn.classList.contains('disliked')) {
+                dislikeBtn.classList.remove('disliked');
+                dislikeBtn.querySelector('i').className = 'far fa-thumbs-down';
+            }
+        }
+    }
+
+    // Dislike Post
+    function dislikePost(postId, button) {
+        const dislikeBtn = button;
+        const likeBtn = dislikeBtn.parentElement.querySelector('.like-btn');
+        const likeCountSpan = likeBtn.querySelector('.like-count');
+        let count = parseInt(likeCountSpan.textContent);
+        
+        if (dislikeBtn.classList.contains('disliked')) {
+            // Remove dislike
+            dislikeBtn.classList.remove('disliked');
+            dislikeBtn.querySelector('i').className = 'far fa-thumbs-down';
+        } else {
+            // Dislike
+            dislikeBtn.classList.add('disliked');
+            dislikeBtn.querySelector('i').className = 'fas fa-thumbs-down';
+            
+            // Remove like if active
+            if (likeBtn.classList.contains('liked')) {
+                likeBtn.classList.remove('liked');
+                likeBtn.querySelector('i').className = 'far fa-thumbs-up';
+                likeCountSpan.textContent = count - 1;
+            }
+        }
+    }
+
+    // Like Reply
+    function likeReply(button) {
+        const span = button.querySelector('span');
+        let count = parseInt(span.textContent);
+        
+        if (button.classList.contains('liked')) {
+            button.classList.remove('liked');
+            button.querySelector('i').className = 'far fa-thumbs-up';
+            span.textContent = count - 1;
+        } else {
+            button.classList.add('liked');
+            button.querySelector('i').className = 'fas fa-thumbs-up';
+            span.textContent = count + 1;
+        }
+    }
+
+    // Toggle Replies with animation
+    function toggleReplies(postId) {
+        const repliesSection = document.getElementById(`replies-${postId}`);
+        const button = event.target.closest('.show-replies-btn');
+        const icon = button.querySelector('i');
+        
+        if (repliesSection.style.display === 'none') {
+            repliesSection.style.display = 'block';
+            button.classList.add('active');
+        } else {
+            repliesSection.style.display = 'none';
+            button.classList.remove('active');
+        }
+    }
+
+    // Open Reply Form
+    function openReplyForm(postId) {
+        const repliesSection = document.getElementById(`replies-${postId}`);
+        const button = document.querySelector(`[data-post-id="${postId}"] .show-replies-btn`);
+        
+        if (repliesSection.style.display === 'none') {
+            repliesSection.style.display = 'block';
+            button.classList.add('active');
+        }
+        
+        // Focus on textarea
+        const textarea = document.getElementById(`reply-input-${postId}`);
+        textarea.focus();
+    }
+
+    // Add Reply
+    function addReply(postId) {
+        const replyInput = document.getElementById(`reply-input-${postId}`);
+        const replyText = replyInput.value.trim();
+        
+        if (replyText === '') {
+            alert('Silakan tulis balasan terlebih dahulu!');
+            return;
+        }
+
+        const repliesSection = document.getElementById(`replies-${postId}`);
+        const replyCard = document.createElement('div');
+        replyCard.className = 'reply-card';
+        replyCard.innerHTML = `
+            <div class="reply-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="author-avatar" style="width: 30px; height: 30px; font-size: 12px;">YA</div>
+                    <div>
+                        <span class="reply-author">Anda</span>
+                        <span class="reply-time"> · Baru saja</span>
+                    </div>
+                </div>
+                <div class="reply-actions">
+                    <button class="reply-like-btn" onclick="likeReply(this)">
+                        <i class="far fa-thumbs-up"></i>
+                        <span>0</span>
+                    </button>
+                </div>
+            </div>
+            <p class="reply-content">${replyText}</p>
+        `;
+        
+        // Insert before the input form
+        const inputForm = repliesSection.querySelector('.form-group');
+        repliesSection.insertBefore(replyCard, inputForm);
+        
+        // Update reply count
+        const replyCountBtn = document.querySelector(`[data-post-id="${postId}"] .show-replies-btn .reply-count`);
+        const currentCount = parseInt(replyCountBtn.textContent.split(' ')[0]);
+        replyCountBtn.textContent = (currentCount + 1) + ' balasan';
+        
+        // Clear input
+        replyInput.value = '';
+        
+        alert('Balasan berhasil ditambahkan!');
+    }
+
+    // Open New Post Modal
+    function openNewPostModal() {
+        document.getElementById('newPostModal').classList.add('active');
+    }
+
+    // Close New Post Modal
+    function closeNewPostModal() {
+        document.getElementById('newPostModal').classList.remove('active');
+        document.getElementById('newPostForm').reset();
+    }
+
+    // Submit New Post
+    document.getElementById('newPostForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const title = document.getElementById('postTitle').value;
+        const content = document.getElementById('postContent').value;
+        
+        const newPost = document.createElement('div');
+        newPost.className = 'post-card';
+        const postId = Date.now();
+        newPost.setAttribute('data-post-id', postId);
+        
+        newPost.innerHTML = `
+            <div class="post-header">
+                <div class="post-author">
+                    <div class="author-avatar">YA</div>
+                    <div class="author-info">
+                        <h5>Anda</h5>
+                        <span>Baru saja</span>
+                    </div>
+                </div>
+                <div class="post-actions">
+                    <button class="btn-action btn-edit" onclick="editPost(${postId})">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn-action btn-delete" onclick="deletePost(${postId})">
+                        <i class="fas fa-trash"></i> Hapus
+                    </button>
+                </div>
+            </div>
+            <h3 class="post-title">${title}</h3>
+            <p class="post-content">${content}</p>
+            
+            <div class="post-interactions">
+                <button class="interaction-btn like-btn" onclick="likePost(${postId}, this)">
+                    <i class="far fa-thumbs-up"></i>
+                    <span class="like-count">0</span>
+                </button>
+                <button class="interaction-btn dislike-btn" onclick="dislikePost(${postId}, this)">
+                    <i class="far fa-thumbs-down"></i>
+                </button>
+                <button class="interaction-btn" onclick="openReplyForm(${postId})">
+                    <i class="far fa-comment"></i>
+                    <span>Balas</span>
+                </button>
+                <button class="show-replies-btn" onclick="toggleReplies(${postId})">
+                    <i class="fas fa-chevron-down"></i>
+                    <span class="reply-count">0 balasan</span>
+                </button>
+            </div>
+            
+            <div class="replies-section" id="replies-${postId}" style="display: none;">
+                <div class="form-group" style="margin-top: 15px;">
+                    <textarea class="form-control" placeholder="Tulis balasan Anda..." id="reply-input-${postId}"></textarea>
+                    <button class="btn-submit" style="margin-top: 10px;" onclick="addReply(${postId})">Kirim Balasan</button>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('postsContainer').insertBefore(newPost, document.getElementById('postsContainer').firstChild);
+        
+        closeNewPostModal();
+        alert('Postingan berhasil dibuat!');
+    });
+
+    // Edit Post
+    function editPost(postId) {
+        const postCard = document.querySelector(`[data-post-id="${postId}"]`);
+        const title = postCard.querySelector('.post-title').textContent;
+        const content = postCard.querySelector('.post-content').textContent;
+        
+        document.getElementById('editPostId').value = postId;
+        document.getElementById('editPostTitle').value = title;
+        document.getElementById('editPostContent').value = content;
+        
+        document.getElementById('editPostModal').classList.add('active');
+    }
+
+    // Close Edit Post Modal
+    function closeEditPostModal() {
+        document.getElementById('editPostModal').classList.remove('active');
+        document.getElementById('editPostForm').reset();
+    }
+
+    // Submit Edit Post
+    document.getElementById('editPostForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const postId = document.getElementById('editPostId').value;
+        const title = document.getElementById('editPostTitle').value;
+        const content = document.getElementById('editPostContent').value;
+        
+        const postCard = document.querySelector(`[data-post-id="${postId}"]`);
+        postCard.querySelector('.post-title').textContent = title;
+        postCard.querySelector('.post-content').textContent = content;
+        
+        closeEditPostModal();
+        alert('Postingan berhasil diperbarui!');
+    });
+
+    // Delete Post
+    function deletePost(postId) {
+        if (confirm('Apakah Anda yakin ingin menghapus postingan ini?')) {
+            const postCard = document.querySelector(`[data-post-id="${postId}"]`);
+            postCard.style.opacity = '0';
+            postCard.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                postCard.remove();
+                alert('Postingan berhasil dihapus!');
+            }, 300);
+        }
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const newPostModal = document.getElementById('newPostModal');
+        const editPostModal = document.getElementById('editPostModal');
+        
+        if (event.target === newPostModal) {
+            closeNewPostModal();
+        }
+        if (event.target === editPostModal) {
+            closeEditPostModal();
+        }
+    }
+</script>
+
 @endsection

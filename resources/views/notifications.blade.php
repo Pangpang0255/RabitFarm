@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testimoni - RabitFarm</title>
+    <title>Notifikasi - RabitFarm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { 
             margin: 0; 
             padding: 0; 
-            background-color: white; 
+            background-color: #f5f5f5; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
         header { 
             background-color: white; 
@@ -23,148 +25,233 @@
         .nav-link:hover { color: #228B22 !important; }
         .dropdown-menu { border: 1px solid #ddd; }
         
-        .hero-testimonials {
-            position: relative;
-            height: 300px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1920') center/cover;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .hero-testimonials h1 {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .breadcrumb-custom {
-            background: transparent;
-            margin: 0;
-            padding: 0;
-        }
-        .breadcrumb-custom a {
-            color: #32CD32;
-            text-decoration: none;
-        }
-        .breadcrumb-custom span {
-            color: white;
-        }
-        
-        .testimonials-section {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-        }
-        .testimonials-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .testimonials-header h3 {
-            color: #228B22;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .testimonials-header h2 {
-            color: #333;
-            font-size: 36px;
-            font-weight: bold;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        .testimonial-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            overflow: hidden;
-        }
-        .testimonial-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .testimonial-text {
-            color: #666;
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        .testimonial-name {
-            color: #228B22;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-        
-        .newsletter-section {
-            padding: 60px 0;
-            background-color: white;
-        }
-        .newsletter-content {
-            max-width: 800px;
+        /* Notifications Styles */
+        .notifications-container {
+            padding: 30px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-        .newsletter-content h3 {
-            color: #333;
-            font-size: 32px;
-            margin-bottom: 10px;
+        
+        .notifications-header {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 8px 8px 0 0;
+            border-bottom: 1px solid #e0e0e0;
         }
-        .newsletter-content p {
-            color: #666;
-            margin-bottom: 30px;
-        }
-        .newsletter-form {
-            display: flex;
-            gap: 10px;
-        }
-        .newsletter-form input {
-            flex: 1;
-            padding: 15px 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 5px;
-        }
-        .newsletter-form button {
-            background-color: #228B22;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 5px;
+        
+        .notifications-title {
+            font-size: 18px;
             font-weight: 600;
-            text-transform: uppercase;
+            color: #333;
+            margin: 0;
+        }
+        
+        .filter-bar {
+            background: white;
+            padding: 15px 25px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-label {
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .filter-select {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+            background: white;
             cursor: pointer;
+            min-width: 120px;
         }
-        .newsletter-form button:hover {
-            background-color: #1a6b1a;
+        
+        .filter-select:focus {
+            outline: none;
+            border-color: #228B22;
         }
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: #228B22;
-            color: white;
-            border-radius: 5px;
+        
+        .search-box {
+            margin-left: auto;
+            position: relative;
+        }
+        
+        .search-input {
+            padding: 6px 35px 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+            width: 250px;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #228B22;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .notifications-table {
+            background: white;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+        }
+        
+        .table {
+            margin: 0;
+        }
+        
+        .table thead {
+            background: #fafafa;
+        }
+        
+        .table thead th {
+            border: none;
+            padding: 15px 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .table tbody td {
+            padding: 18px 20px;
+            vertical-align: middle;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 13px;
+        }
+        
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .table tbody tr:hover {
+            background: #fafafa;
+        }
+        
+        .entity-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .entity-icon {
+            width: 36px;
+            height: 36px;
+            background: #37474f;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            font-size: 20px;
-            z-index: 1000;
+            color: white;
+            font-size: 14px;
+            flex-shrink: 0;
         }
-        .scroll-top:hover {
-            background-color: #1a6b1a;
+        
+        .entity-name {
+            color: #1976d2;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        .entity-name:hover {
+            text-decoration: underline;
+        }
+        
+        .alert-cell {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .alert-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .alert-icon.warning {
+            color: #ff9800;
+        }
+        
+        .alert-icon.info {
+            color: #2196f3;
+        }
+        
+        .alert-text {
+            color: #555;
+            font-size: 13px;
+        }
+        
+        .time-cell {
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .more-info-cell {
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .actions-cell {
+            white-space: nowrap;
+        }
+        
+        .btn-action {
+            padding: 5px 14px;
+            font-size: 12px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 6px;
+            transition: all 0.2s;
+        }
+        
+        .btn-details {
+            background: transparent;
+            color: #1976d2;
+            font-weight: 500;
+        }
+        
+        .btn-details:hover {
+            background: #e3f2fd;
+        }
+        
+        .btn-hide {
+            background: transparent;
+            color: #666;
+        }
+        
+        .btn-hide:hover {
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .dropdown-toggle::after {
+            margin-left: 8px;
         }
     </style>
 </head>
@@ -183,7 +270,6 @@
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="/about">Tentang Kami</a></li>
                         <li class="nav-item"><a class="nav-link" href="/services">Layanan Kami</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/notifications">Testimoni</a></li>
                         <li class="nav-item"><a class="nav-link" href="/forum">Forum Komunitas</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
@@ -191,92 +277,276 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/dashboard">Dashboard Monitoring</a></li>
-                                <li><a class="dropdown-item" href="/dashboard">Pencatatan Digital</a></li>
+                                <li><a class="dropdown-item" href="/recording">Pencatatan Digital</a></li>
                                 <li><a class="dropdown-item" href="/notifications">Notifikasi</a></li>
                                 <li><a class="dropdown-item" href="/forum">Forum Komunitas</a></li>
+                                <li><a class="dropdown-item" href="/database-ternak">Database Ternak</a></li>
                                 <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="/reports">Kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="hero-testimonials">
-        <h1>Testimoni</h1>
-        <div class="breadcrumb-custom">
-            <a href="/">Home</a> <span>/</span> <span>Testimoni</span>
+    <div class="notifications-container">
+        <div class="notifications-header">
+            <h1 class="notifications-title">NOTIFICATIONS</h1>
+        </div>
+
+        <div class="filter-bar">
+            <div class="filter-item">
+                <span class="filter-label">Show</span>
+                <select class="filter-select" id="showFilter">
+                    <option value="all">All</option>
+                    <option value="unread">Unread</option>
+                    <option value="read">Read</option>
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <span class="filter-label">All Entities</span>
+                <select class="filter-select" id="entityFilter">
+                    <option value="all">All Entities</option>
+                    <option value="kelinci">Kelinci</option>
+                    <option value="kandang">Kandang</option>
+                    <option value="pakan">Pakan</option>
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <span class="filter-label">Minimum Severity</span>
+                <select class="filter-select" id="severityFilter">
+                    <option value="all">All Levels</option>
+                    <option value="info">Info</option>
+                    <option value="warning">Warning</option>
+                    <option value="error">Error</option>
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <span class="filter-label">Info</span>
+                <select class="filter-select" id="infoFilter">
+                    <option value="all">All</option>
+                    <option value="health">Health</option>
+                    <option value="feeding">Feeding</option>
+                    <option value="breeding">Breeding</option>
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <span class="filter-label">View</span>
+                <select class="filter-select" id="viewFilter">
+                    <option value="table">Table</option>
+                    <option value="list">List</option>
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <span class="filter-label">Active</span>
+                <select class="filter-select" id="activeFilter">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search" id="searchInput">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+        </div>
+
+        <div class="notifications-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ENTITY</th>
+                        <th>ALERT</th>
+                        <th>TIME</th>
+                        <th>MORE INFO</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="entity-cell">
+                                <div class="entity-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <a href="#" class="entity-name">DESKTOP-R0...</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alert-cell">
+                                <i class="fas fa-exclamation-triangle alert-icon warning"></i>
+                                <span class="alert-text">Device is not connected for extended time</span>
+                            </div>
+                        </td>
+                        <td class="time-cell">Jan 9, 2023 12:46 AM</td>
+                        <td class="more-info-cell">-</td>
+                        <td class="actions-cell">
+                            <button class="btn-action btn-details">Details</button>
+                            <button class="btn-action btn-hide">Hide</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="entity-cell">
+                                <div class="entity-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <a href="#" class="entity-name">Gateway-x576</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alert-cell">
+                                <i class="fas fa-exclamation-triangle alert-icon warning"></i>
+                                <span class="alert-text">Device is not connected for extended time</span>
+                            </div>
+                        </td>
+                        <td class="time-cell">Jan 9, 2023 12:44 AM</td>
+                        <td class="more-info-cell">-</td>
+                        <td class="actions-cell">
+                            <button class="btn-action btn-details">Details</button>
+                            <button class="btn-action btn-hide">Hide</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="entity-cell">
+                                <div class="entity-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <a href="#" class="entity-name">Gateway-Nlib</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alert-cell">
+                                <i class="fas fa-exclamation-triangle alert-icon warning"></i>
+                                <span class="alert-text">Device is not connected for extended time</span>
+                            </div>
+                        </td>
+                        <td class="time-cell">Today 12:44 AM</td>
+                        <td class="more-info-cell">-</td>
+                        <td class="actions-cell">
+                            <button class="btn-action btn-details">Details</button>
+                            <button class="btn-action btn-hide">Hide</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="entity-cell">
+                                <div class="entity-icon">
+                                    <i class="fas fa-hdd"></i>
+                                </div>
+                                <a href="#" class="entity-name">DESKTOP-RO...</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alert-cell">
+                                <i class="fas fa-info-circle alert-icon info"></i>
+                                <span class="alert-text">Device never backed up</span>
+                            </div>
+                        </td>
+                        <td class="time-cell">Dec 31, 2022 12:44 AM</td>
+                        <td class="more-info-cell">-</td>
+                        <td class="actions-cell">
+                            <button class="btn-action btn-details">Details</button>
+                            <button class="btn-action btn-hide">Hide</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="entity-cell">
+                                <div class="entity-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <a href="#" class="entity-name">Gateway-x090</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alert-cell">
+                                <i class="fas fa-info-circle alert-icon info"></i>
+                                <span class="alert-text">Device never backed up</span>
+                            </div>
+                        </td>
+                        <td class="time-cell">Jan 9, 2023 12:44 AM</td>
+                        <td class="more-info-cell">-</td>
+                        <td class="actions-cell">
+                            <button class="btn-action btn-details">Details</button>
+                            <button class="btn-action btn-hide">Hide</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="entity-cell">
+                                <div class="entity-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <a href="#" class="entity-name">Gateway-NLIb</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alert-cell">
+                                <i class="fas fa-info-circle alert-icon info"></i>
+                                <span class="alert-text">Device never backed up</span>
+                            </div>
+                        </td>
+                        <td class="time-cell">Yesterday, 12:34 AM</td>
+                        <td class="more-info-cell">-</td>
+                        <td class="actions-cell">
+                            <button class="btn-action btn-details">Details</button>
+                            <button class="btn-action btn-hide">Hide</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="testimonials-header">
-                <h3>TESTIMONI</h3>
-                <h2>Testimoni Peternak Kelinci Kami</h2>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmad Rizki">
-                        </div>
-                        <p class="testimonial-text">"RabitFarm sangat membantu saya dalam mengelola peternakan kelinci. Sistem monitoring digital memudahkan saya memantau kesehatan dan pertumbuhan kelinci secara real-time. Sangat direkomendasikan!"</p>
-                        <div class="testimonial-name">AHMAD RIZKI</div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Siti Nurhaliza">
-                        </div>
-                        <p class="testimonial-text">"Sejak menggunakan RabitFarm, produktivitas peternakan saya meningkat 40%. Platform ini sangat user-friendly dan fitur-fiturnya lengkap. Tim support juga sangat responsif dan membantu."</p>
-                        <div class="testimonial-name">SITI NURHALIZA</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dewi Lestari">
-                        </div>
-                        <p class="testimonial-text">"Manajemen pakan dan breeding program dari RabitFarm sangat membantu mengoptimalkan hasil peternakan. Kualitas kelinci saya meningkat signifikan dan pemasaran produk jadi lebih mudah."</p>
-                        <div class="testimonial-name">DEWI LESTARI</div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Budi Santoso">
-                        </div>
-                        <p class="testimonial-text">"Forum komunitas di RabitFarm memungkinkan saya berbagi pengalaman dan belajar dari peternak lain. Laporan keuangan yang detail juga membantu saya mengatur bisnis dengan lebih baik."</p>
-                        <div class="testimonial-name">BUDI SANTOSO</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="newsletter-section">
-        <div class="container">
-            <div class="newsletter-content text-center">
-                <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
-                <p>Dapatkan tips dan informasi terbaru seputar peternakan kelinci langsung ke email Anda</p>
-                <div class="newsletter-form">
-                    <input type="email" placeholder="Enter your email address">
-                    <button type="submit">Subscribe</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Filter functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('.notifications-table tbody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        // Filter dropdowns
+        const filters = ['showFilter', 'entityFilter', 'severityFilter', 'infoFilter', 'viewFilter', 'activeFilter'];
+        filters.forEach(filterId => {
+            document.getElementById(filterId).addEventListener('change', function() {
+                console.log(`Filter ${filterId} changed to:`, this.value);
+                // Add your filter logic here
+            });
+        });
+
+        // Details button
+        document.querySelectorAll('.btn-details').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('Details functionality coming soon!');
+            });
+        });
+
+        // Hide button
+        document.querySelectorAll('.btn-hide').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                row.style.opacity = '0.5';
+                setTimeout(() => {
+                    row.style.display = 'none';
+                }, 300);
+            });
+        });
+    </script>
 </body>
 </html>

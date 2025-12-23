@@ -16,7 +16,7 @@
                     <div class="d-flex justify-content-between align-items-start">
                         <div>
                             <h6 class="text-muted mb-2">Total Populasi</h6>
-                            <h3 class="fw-bold mb-0">156</h3>
+                            <h3 class="fw-bold mb-0">{{ $totalRabbits }}</h3>
                             <small class="text-success">Kelinci Aktif</small>
                         </div>
                         <div class="bg-primary bg-opacity-10 p-3 rounded">
@@ -32,7 +32,7 @@
                     <div class="d-flex justify-content-between align-items-start">
                         <div>
                             <h6 class="text-muted mb-2">Jantan</h6>
-                            <h3 class="fw-bold mb-0">25</h3>
+                            <h3 class="fw-bold mb-0">{{ $maleRabbits }}</h3>
                             <small class="text-info">Pejantan Produktif</small>
                         </div>
                         <div class="bg-info bg-opacity-10 p-3 rounded">
@@ -48,7 +48,7 @@
                     <div class="d-flex justify-content-between align-items-start">
                         <div>
                             <h6 class="text-muted mb-2">Indukan</h6>
-                            <h3 class="fw-bold mb-0">45</h3>
+                            <h3 class="fw-bold mb-0">{{ $femaleRabbits }}</h3>
                             <small class="text-warning">Betina Produktif</small>
                         </div>
                         <div class="bg-warning bg-opacity-10 p-3 rounded">
@@ -64,7 +64,7 @@
                     <div class="d-flex justify-content-between align-items-start">
                         <div>
                             <h6 class="text-muted mb-2">Sapihan & Anak</h6>
-                            <h3 class="fw-bold mb-0">86</h3>
+                            <h3 class="fw-bold mb-0">{{ $youngRabbits }}</h3>
                             <small class="text-danger">Kelinci Muda</small>
                         </div>
                         <div class="bg-danger bg-opacity-10 p-3 rounded">
@@ -86,36 +86,24 @@
                 </div>
                 <div class="card-body">
                     <div class="list-group list-group-flush">
+                        @forelse($upcomingBreedings as $breeding)
+                        <div class="list-group-item px-0 py-2 @if(!$loop->first) border-top @else border-0 @endif">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <strong class="d-block">{{ $breeding->femaleRabbit->code }} ({{ $breeding->femaleRabbit->breed }})</strong>
+                                    <small class="text-muted">x {{ $breeding->maleRabbit->code }} ({{ $breeding->maleRabbit->breed }})</small>
+                                </div>
+                                <span class="badge bg-primary">{{ ucfirst($breeding->status) }}</span>
+                            </div>
+                        </div>
+                        @empty
                         <div class="list-group-item px-0 py-2 border-0">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <strong class="d-block">ID-F024 (Rex)</strong>
-                                    <small class="text-muted">x ID-M012 (New Zealand)</small>
-                                </div>
-                                <span class="badge bg-primary">Siap</span>
-                            </div>
+                            <small class="text-muted">Tidak ada jadwal perkawinan</small>
                         </div>
-                        <div class="list-group-item px-0 py-2 border-top">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <strong class="d-block">ID-F038 (Lokal)</strong>
-                                    <small class="text-muted">x ID-M015 (Rex)</small>
-                                </div>
-                                <span class="badge bg-primary">Siap</span>
-                            </div>
-                        </div>
-                        <div class="list-group-item px-0 py-2 border-top">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <strong class="d-block">ID-F041 (NZ)</strong>
-                                    <small class="text-muted">x ID-M012 (New Zealand)</small>
-                                </div>
-                                <span class="badge bg-primary">Siap</span>
-                            </div>
-                        </div>
+                        @endforelse
                     </div>
                     <div class="mt-3">
-                        <small class="text-muted"><i class="fas fa-info-circle me-1"></i>3 pasangan dijadwalkan</small>
+                        <small class="text-muted"><i class="fas fa-info-circle me-1"></i>{{ $upcomingBreedings->count() }} pasangan dijadwalkan</small>
                     </div>
                 </div>
             </div>

@@ -396,7 +396,6 @@
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">Tentang Kami</a></li>
                     <li class="nav-item"><a class="nav-link" href="/services">Layanan Kami</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/notifications">Testimoni</a></li>
                     <li class="nav-item"><a class="nav-link" href="/forum">Forum Komunitas</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
@@ -410,7 +409,7 @@
                             <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="/reports">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
                 </ul>
             </div>
         </div>
@@ -848,7 +847,7 @@
                     <li><a href="/about">Tentang Kami</a></li>
                     <li><a href="/services">Layanan</a></li>
                     <li><a href="/forum">Forum Komunitas</a></li>
-                    <li><a href="/reports">Kontak</a></li>
+                    <li><a href="/kontak">Kontak</a></li>
                 </ul>
             </div>
             
