@@ -133,4 +133,57 @@ class HealthDashboardController extends Controller
             'sickPercentage'
         ));
     }
+
+    public function getHealthData()
+    {
+        $userId = session('user_id', 1);
+
+        // Total health records statistics
+        $totalHealthRecords = HealthRecord::where('user_id', $userId)->count();
+        $recoveredCount = HealthRecord::where('user_id', $userId)
+            ->where('status', 'recovered')->count();
+        $underTreatmentCount = HealthRecord::where('user_id', $userId)
+            ->where('status', 'under_treatment')->count();
+        $criticalCount = HealthRecord::where('user_id', $userId)
+            ->where('status', 'critical')->count();
+
+        // Rabbit health status
+        $healthyRabbits = Rabbit::where('user_id', $userId)
+            ->where('health_status', 'sehat')->count();
+        $sickRabbits = Rabbit::where('user_id', $userId)
+            ->where('health_status', 'sakit')->count();
+        $totalRabbits = Rabbit::where('user_id', $userId)->count();
+
+        // Health percentage
+        $healthPercentage = $totalRabbits > 0 ? round(($healthyRabbits / $totalRabbits) * 100, 1) : 0;
+        $sickPercentage = $totalRabbits > 0 ? round(($sickRabbits / $totalRabbits) * 100, 1) : 0;
+
+        // Upcoming checks count
+        $upcomingChecksCount = HealthRecord::where('user_id', $userId)
+            ->whereNotNull('next_check_date')
+            ->where('next_check_date', '>=', now())
+            ->where('status', '!=', 'recovered')
+            ->count();
+
+        // Overdue checks count
+        $overdueChecksCount = HealthRecord::where('user_id', $userId)
+            ->whereNotNull('next_check_date')
+            ->where('next_check_date', '<', now())
+            ->where('status', '!=', 'recovered')
+            ->count();
+
+        return response()->json([
+            'totalHealthRecords' => $totalHealthRecords,
+            'recoveredCount' => $recoveredCount,
+            'underTreatmentCount' => $underTreatmentCount,
+            'criticalCount' => $criticalCount,
+            'healthyRabbits' => $healthyRabbits,
+            'sickRabbits' => $sickRabbits,
+            'totalRabbits' => $totalRabbits,
+            'healthPercentage' => $healthPercentage,
+            'sickPercentage' => $sickPercentage,
+            'upcomingChecksCount' => $upcomingChecksCount,
+            'overdueChecksCount' => $overdueChecksCount
+        ]);
+    }
 }

@@ -403,7 +403,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/dashboard">Dashboard Monitoring</a></li>
-                            <li><a class="dropdown-item" href="/dashboard">Pencatatan Digital</a></li>
+                            <li><a class="dropdown-item" href="/recording">Pencatatan Digital</a></li>
+                            <li><a class="dropdown-item" href="/database-ternak">Database Ternak</a></li>
                             <li><a class="dropdown-item" href="/notifications">Notifikasi</a></li>
                             <li><a class="dropdown-item" href="/forum">Forum Komunitas</a></li>
                             <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
@@ -430,7 +431,7 @@
                     <h1><span class="highlight">Monitoring</span> Peternakan<br>Kelinci Secara Real-Time</h1>
                     <p>Pantau kondisi kandang, pakan, kesehatan, dan populasi kelinci
                         dalam satu sistem terintegrasi untuk meningkatkan produktivitas peternakan.</p>
-                    <a href="/reports" class="btn-hero">
+                    <a href="/kontak" class="btn-hero">
                         Hubungi Kami
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

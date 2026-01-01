@@ -481,6 +481,46 @@
             }
         }
     });
+
+    // Realtime data update function
+    function updateHealthData() {
+        fetch('{{ route('dashboard.health.data') }}')
+            .then(response => response.json())
+            .then(data => {
+                // Update statistics cards
+                document.querySelector('.card-body h3:nth-of-type(1)').textContent = data.totalHealthRecords;
+                document.querySelectorAll('.card-body h3')[1].textContent = data.recoveredCount;
+                document.querySelectorAll('.card-body h3')[2].textContent = data.underTreatmentCount;
+                document.querySelectorAll('.card-body h3')[3].textContent = data.criticalCount;
+
+                // Update health status
+                document.querySelector('.col-6.text-center h2.text-success').textContent = data.healthyRabbits;
+                document.querySelector('.col-6.text-center h2.text-danger').textContent = data.sickRabbits;
+                
+                // Update progress bars and percentages
+                const healthProgress = document.querySelector('.col-6.text-center:nth-of-type(1) .progress-bar');
+                const sickProgress = document.querySelector('.col-6.text-center:nth-of-type(2) .progress-bar');
+                
+                if (healthProgress) {
+                    healthProgress.style.width = data.healthPercentage + '%';
+                    healthProgress.parentElement.nextElementSibling.textContent = data.healthPercentage + '%';
+                }
+                
+                if (sickProgress) {
+                    sickProgress.style.width = data.sickPercentage + '%';
+                    sickProgress.parentElement.nextElementSibling.textContent = data.sickPercentage + '%';
+                }
+
+                console.log('Health data updated successfully');
+            })
+            .catch(error => console.error('Error updating health data:', error));
+    }
+
+    // Update data every 30 seconds
+    setInterval(updateHealthData, 30000);
+    
+    // Initial update after 2 seconds
+    setTimeout(updateHealthData, 2000);
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">

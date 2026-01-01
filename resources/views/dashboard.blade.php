@@ -3,9 +3,20 @@
 @section('content')
 <div class="container py-4">
     <!-- Header -->
-    <div class="mb-4">
-        <h2 class="fw-bold">Dashboard Monitoring</h2>
-        <p class="text-muted">Kelola peternakan kelinci Anda dengan mudah</p>
+    <div class="mb-4 d-flex justify-content-between align-items-center">
+        <div>
+            <h2 class="fw-bold">Dashboard Monitoring</h2>
+            <p class="text-muted mb-0">Kelola peternakan kelinci Anda dengan mudah</p>
+        </div>
+        <div class="text-end">
+            <small class="text-muted d-block">Update Terakhir:</small>
+            <small class="text-primary fw-bold" id="lastUpdateTime">{{ now()->format('d M Y H:i:s') }}</small>
+            <div class="mt-1">
+                <span class="badge bg-success" id="autoRefreshStatus">
+                    <i class="fas fa-sync-alt me-1"></i> Auto-refresh Active
+                </span>
+            </div>
+        </div>
     </div>
 
     <!-- Rekapitulasi Total Populasi -->
@@ -16,7 +27,7 @@
                     <div class="d-flex justify-content-between align-items-start">
                         <div>
                             <h6 class="text-muted mb-2">Total Populasi</h6>
-                            <h3 class="fw-bold mb-0">{{ $totalRabbits }}</h3>
+                            <h3 class="fw-bold mb-0" id="totalRabbits">{{ $totalRabbits }}</h3>
                             <small class="text-success">Kelinci Aktif</small>
                         </div>
                         <div class="bg-primary bg-opacity-10 p-3 rounded">
@@ -32,7 +43,7 @@
                     <div class="d-flex justify-content-between align-items-start">
                         <div>
                             <h6 class="text-muted mb-2">Jantan</h6>
-                            <h3 class="fw-bold mb-0">{{ $maleRabbits }}</h3>
+                            <h3 class="fw-bold mb-0" id="maleRabbits">{{ $maleRabbits }}</h3>
                             <small class="text-info">Pejantan Produktif</small>
                         </div>
                         <div class="bg-info bg-opacity-10 p-3 rounded">
@@ -48,7 +59,7 @@
                     <div class="d-flex justify-content-between align-items-start">
                         <div>
                             <h6 class="text-muted mb-2">Indukan</h6>
-                            <h3 class="fw-bold mb-0">{{ $femaleRabbits }}</h3>
+                            <h3 class="fw-bold mb-0" id="femaleRabbits">{{ $femaleRabbits }}</h3>
                             <small class="text-warning">Betina Produktif</small>
                         </div>
                         <div class="bg-warning bg-opacity-10 p-3 rounded">
@@ -64,7 +75,7 @@
                     <div class="d-flex justify-content-between align-items-start">
                         <div>
                             <h6 class="text-muted mb-2">Sapihan & Anak</h6>
-                            <h3 class="fw-bold mb-0">{{ $youngRabbits }}</h3>
+                            <h3 class="fw-bold mb-0" id="youngRabbits">{{ $youngRabbits }}</h3>
                             <small class="text-danger">Kelinci Muda</small>
                         </div>
                         <div class="bg-danger bg-opacity-10 p-3 rounded">
@@ -220,6 +231,69 @@
                 }
             }
         }
+    });
+</script>
+
+<!-- Auto-refresh Dashboard Script -->
+<script>
+    let refreshInterval;
+    
+    // Function to update dashboard data
+    function updateDashboardData() {
+        fetch('{{ route("dashboard.data") }}')
+            .then(response => response.json())
+            .then(data => {
+                // Update statistics
+                document.getElementById('totalRabbits').textContent = data.totalRabbits;
+                document.getElementById('maleRabbits').textContent = data.maleRabbits;
+                document.getElementById('femaleRabbits').textContent = data.femaleRabbits;
+                document.getElementById('youngRabbits').textContent = data.youngRabbits;
+                
+                // Update last update time
+                document.getElementById('lastUpdateTime').textContent = data.lastUpdate;
+                
+                // Add flash animation to show update
+                const cards = document.querySelectorAll('.card');
+                cards.forEach(card => {
+                    card.style.transition = 'all 0.3s ease';
+                    card.style.opacity = '0.7';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                    }, 300);
+                });
+                
+                console.log('Dashboard updated:', data.lastUpdate);
+            })
+            .catch(error => {
+                console.error('Error updating dashboard:', error);
+                document.getElementById('autoRefreshStatus').innerHTML = '<i class="fas fa-exclamation-triangle me-1"></i> Update Error';
+                document.getElementById('autoRefreshStatus').classList.remove('bg-success');
+                document.getElementById('autoRefreshStatus').classList.add('bg-warning');
+            });
+    }
+    
+    // Start auto-refresh on page load
+    window.addEventListener('DOMContentLoaded', function() {
+        // Update every 30 seconds (30000 milliseconds)
+        refreshInterval = setInterval(updateDashboardData, 30000);
+        
+        console.log('Auto-refresh started - Updates every 30 seconds');
+        
+        // Optional: Add manual refresh button functionality
+        const statusBadge = document.getElementById('autoRefreshStatus');
+        statusBadge.style.cursor = 'pointer';
+        statusBadge.addEventListener('click', function() {
+            updateDashboardData();
+            this.innerHTML = '<i class="fas fa-sync-alt fa-spin me-1"></i> Refreshing...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-sync-alt me-1"></i> Auto-refresh Active';
+            }, 1000);
+        });
+    });
+    
+    // Stop refresh when leaving page
+    window.addEventListener('beforeunload', function() {
+        clearInterval(refreshInterval);
     });
 </script>
 

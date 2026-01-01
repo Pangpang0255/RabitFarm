@@ -16,16 +16,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard/data', 'DashboardController@getDashboardData')->name('dashboard.data');
 Route::get('/dashboard/breeding-program', 'DashboardController@breedingProgram')->name('dashboard.breeding');
 Route::get('/dashboard/health', 'HealthDashboardController@index')->name('dashboard.health');
+Route::get('/dashboard/health/data', 'HealthDashboardController@getHealthData')->name('dashboard.health.data');
 Route::get('/dashboard/feeding', 'FeedingDashboardController@index')->name('dashboard.feeding');
 Route::post('/dashboard/feeding/generate', 'FeedingDashboardController@generateSchedule')->name('dashboard.feeding.generate');
+Route::get('/dashboard/marketing', 'MarketingDashboardController@index')->name('dashboard.marketing');
+Route::get('/dashboard/marketing/data', 'MarketingDashboardController@getMarketingData')->name('dashboard.marketing.data');
 
 // Database Ternak Routes
 Route::get('/database-ternak', 'DatabaseTernakController@index')->name('database-ternak');
 Route::post('/database-ternak', 'DatabaseTernakController@store')->name('database-ternak.store');
 Route::put('/database-ternak/{id}', 'DatabaseTernakController@update')->name('database-ternak.update');
 Route::delete('/database-ternak/{id}', 'DatabaseTernakController@destroy')->name('database-ternak.destroy');
+
+// Breeding Program Routes
+Route::get('/breeding', 'BreedingController@index')->name('breeding.index');
+Route::post('/breeding', 'BreedingController@store')->name('breeding.store');
+Route::put('/breeding/{id}', 'BreedingController@update')->name('breeding.update');
+Route::delete('/breeding/{id}', 'BreedingController@destroy')->name('breeding.destroy');
 
 Route::get('/services', 'ServiceController@index');
 

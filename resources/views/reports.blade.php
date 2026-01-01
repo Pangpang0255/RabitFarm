@@ -430,9 +430,9 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/dashboard">Dashboard Monitoring</a></li>
                                 <li><a class="dropdown-item" href="/recording">Pencatatan Digital</a></li>
+                                <li><a class="dropdown-item" href="/database-ternak">Database Ternak</a></li>
                                 <li><a class="dropdown-item" href="/notifications">Notifikasi</a></li>
                                 <li><a class="dropdown-item" href="/forum">Forum Komunitas</a></li>
-                                <li><a class="dropdown-item" href="/database-ternak">Database Ternak</a></li>
                                 <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
                             </ul>
                         </li>

@@ -70,6 +70,73 @@ class DashboardController extends Controller
         ));
     }
 
+    public function getDashboardData()
+    {
+        $userId = session('user_id', 1);
+        
+        // Get rabbit statistics
+        $totalRabbits = Rabbit::where('user_id', $userId)->count();
+        $maleRabbits = Rabbit::where('user_id', $userId)->where('gender', 'jantan')->count();
+        $femaleRabbits = Rabbit::where('user_id', $userId)->where('gender', 'betina')->count();
+        $youngRabbits = Rabbit::where('user_id', $userId)->where('status', 'anak')->count();
+        
+        // Get health statistics
+        $healthyRabbits = Rabbit::where('user_id', $userId)->where('health_status', 'sehat')->count();
+        $sickRabbits = Rabbit::where('user_id', $userId)->where('health_status', 'sakit')->count();
+        
+        // Get breeding schedules (upcoming)
+        $upcomingBreedings = BreedingSchedule::where('user_id', $userId)
+            ->where('status', 'scheduled')
+            ->orderBy('breeding_date', 'asc')
+            ->take(5)
+            ->with(['femaleRabbit', 'maleRabbit'])
+            ->get();
+        
+        // Get today's feeding schedules
+        $todayFeeding = FeedingSchedule::where('user_id', $userId)
+            ->whereDate('feeding_date', today())
+            ->where('status', 'pending')
+            ->count();
+        
+        // Get financial summary (this month)
+        $thisMonthIncome = Transaction::where('user_id', $userId)
+            ->where('type', 'income')
+            ->whereMonth('transaction_date', now()->month)
+            ->whereYear('transaction_date', now()->year)
+            ->sum('amount');
+            
+        $thisMonthExpense = Transaction::where('user_id', $userId)
+            ->where('type', 'expense')
+            ->whereMonth('transaction_date', now()->month)
+            ->whereYear('transaction_date', now()->year)
+            ->sum('amount');
+        
+        $balance = $thisMonthIncome - $thisMonthExpense;
+        
+        // Get recent health checks
+        $recentHealthChecks = HealthRecord::where('user_id', $userId)
+            ->with('rabbit')
+            ->orderBy('check_date', 'desc')
+            ->take(5)
+            ->get();
+
+        return response()->json([
+            'totalRabbits' => $totalRabbits,
+            'maleRabbits' => $maleRabbits,
+            'femaleRabbits' => $femaleRabbits,
+            'youngRabbits' => $youngRabbits,
+            'healthyRabbits' => $healthyRabbits,
+            'sickRabbits' => $sickRabbits,
+            'upcomingBreedings' => $upcomingBreedings,
+            'todayFeeding' => $todayFeeding,
+            'thisMonthIncome' => $thisMonthIncome,
+            'thisMonthExpense' => $thisMonthExpense,
+            'balance' => $balance,
+            'recentHealthChecks' => $recentHealthChecks,
+            'lastUpdate' => now()->format('d M Y H:i:s')
+        ]);
+    }
+
     public function breedingProgram()
     {
         $userId = session('user_id', 1);
