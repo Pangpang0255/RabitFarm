@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\GenerateDailyFeedingSchedule::class,
     ];
 
     /**
@@ -24,6 +24,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //
+        // Generate feeding schedule setiap hari jam 00:01 (tepat setelah tengah malam)
+        $schedule->command('feeding:generate-daily')
+            ->dailyAt('00:01')
+            ->appendOutputTo(storage_path('logs/feeding-schedule.log'));
+        
+        // Backup: Generate juga jam 06:00 pagi (jika ada yang terlewat)
+        $schedule->command('feeding:generate-daily')
+            ->dailyAt('06:00')
+            ->appendOutputTo(storage_path('logs/feeding-schedule.log'));
     }
 }

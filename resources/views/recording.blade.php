@@ -27,7 +27,7 @@
 
                 <!-- Breeding Program -->
                 <div class="col-md-4">
-                    <a href="#" class="text-decoration-none">
+                    <a href="/dashboard/breeding-program" class="text-decoration-none">
                         <div class="card border-0 shadow-sm h-100 hover-card">
                             <div class="card-body text-center p-4">
                                 <div class="bg-danger bg-opacity-10 p-4 rounded-circle d-inline-flex mb-3">
@@ -43,7 +43,7 @@
 
                 <!-- Kesehatan -->
                 <div class="col-md-4">
-                    <a href="#" class="text-decoration-none">
+                    <a href="/dashboard/health" class="text-decoration-none">
                         <div class="card border-0 shadow-sm h-100 hover-card">
                             <div class="card-body text-center p-4">
                                 <div class="bg-success bg-opacity-10 p-4 rounded-circle d-inline-flex mb-3">
@@ -59,7 +59,7 @@
 
                 <!-- Manajemen Pakan -->
                 <div class="col-md-4">
-                    <a href="#" class="text-decoration-none">
+                    <a href="/dashboard/feeding" class="text-decoration-none">
                         <div class="card border-0 shadow-sm h-100 hover-card">
                             <div class="card-body text-center p-4">
                                 <div class="bg-warning bg-opacity-10 p-4 rounded-circle d-inline-flex mb-3">

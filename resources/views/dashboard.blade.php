@@ -78,39 +78,8 @@
 
     <!-- To-Do List Hari Ini -->
     <div class="row g-3 mb-4">
-        <!-- Daftar Kelinci Harus Dikawinkan -->
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-header bg-primary text-white">
-                    <h6 class="mb-0"><i class="fas fa-heart me-2"></i>Jadwal Kawin Hari Ini</h6>
-                </div>
-                <div class="card-body">
-                    <div class="list-group list-group-flush">
-                        @forelse($upcomingBreedings as $breeding)
-                        <div class="list-group-item px-0 py-2 @if(!$loop->first) border-top @else border-0 @endif">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <strong class="d-block">{{ $breeding->femaleRabbit->code }} ({{ $breeding->femaleRabbit->breed }})</strong>
-                                    <small class="text-muted">x {{ $breeding->maleRabbit->code }} ({{ $breeding->maleRabbit->breed }})</small>
-                                </div>
-                                <span class="badge bg-primary">{{ ucfirst($breeding->status) }}</span>
-                            </div>
-                        </div>
-                        @empty
-                        <div class="list-group-item px-0 py-2 border-0">
-                            <small class="text-muted">Tidak ada jadwal perkawinan</small>
-                        </div>
-                        @endforelse
-                    </div>
-                    <div class="mt-3">
-                        <small class="text-muted"><i class="fas fa-info-circle me-1"></i>{{ $upcomingBreedings->count() }} pasangan dijadwalkan</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Daftar Cek Kehamilan -->
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-header bg-warning text-dark">
                     <h6 class="mb-0"><i class="fas fa-stethoscope me-2"></i>Cek Kehamilan (Palpasi)</h6>
@@ -153,7 +122,7 @@
         </div>
 
         <!-- Daftar Sapih Hari Ini -->
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-header bg-success text-white">
                     <h6 class="mb-0"><i class="fas fa-cut me-2"></i>Sapih Hari Ini</h6>

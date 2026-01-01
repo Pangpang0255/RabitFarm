@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard/breeding-program', 'DashboardController@breedingProgram')->name('dashboard.breeding');
+Route::get('/dashboard/health', 'HealthDashboardController@index')->name('dashboard.health');
+Route::get('/dashboard/feeding', 'FeedingDashboardController@index')->name('dashboard.feeding');
+Route::post('/dashboard/feeding/generate', 'FeedingDashboardController@generateSchedule')->name('dashboard.feeding.generate');
 
 // Database Ternak Routes
 Route::get('/database-ternak', 'DatabaseTernakController@index')->name('database-ternak');
