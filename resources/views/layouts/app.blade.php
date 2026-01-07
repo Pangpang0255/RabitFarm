@@ -33,20 +33,45 @@
                         <li class="nav-item"><a class="nav-link" href="/about">Tentang Kami</a></li>
                         <li class="nav-item"><a class="nav-link" href="/services">Layanan Kami</a></li>
                         <li class="nav-item"><a class="nav-link" href="/forum">Forum Komunitas</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                Dashboard
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/dashboard">Dashboard Monitoring</a></li>
-                                <li><a class="dropdown-item" href="/recording">Pencatatan Digital</a></li>
-                                <li><a class="dropdown-item" href="/database-ternak">Database Ternak</a></li>
-                                <li><a class="dropdown-item" href="/notifications">Notifikasi</a></li>
-                                <li><a class="dropdown-item" href="/forum">Forum Komunitas</a></li>
-                                <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
-                            </ul>
-                        </li>
                         <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                    Dashboard
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/dashboard">Dashboard Monitoring</a></li>
+                                    <li><a class="dropdown-item" href="/recording">Pencatatan Digital</a></li>
+                                    <li><a class="dropdown-item" href="/database-ternak">Database Ternak</a></li>
+                                    <li><a class="dropdown-item" href="/notifications">Notifikasi</a></li>
+                                    <li><a class="dropdown-item" href="/forum">Forum Komunitas</a></li>
+                                    <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" style="margin-left: 15px;">
+                                    <i class="fas fa-user-circle me-1"></i>{{ Auth::user()->name }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="/dashboard"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item text-danger">
+                                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="btn btn-green" href="{{ route('login') }}" style="padding: 8px 20px; border-radius: 20px; margin-left: 15px;">
+                                    <i class="fas fa-sign-in-alt me-1"></i>Login
+                                </a>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
             </div>

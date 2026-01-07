@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - RabitFarm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { 
             margin: 0; 
@@ -22,19 +23,8 @@
         .nav-link { color: #333 !important; margin: 0 15px; }
         .nav-link:hover { color: #228B22 !important; }
         .dropdown-menu { border: 1px solid #ddd; }
-        .btn-green { 
-            background-color: #228B22; 
-            border-color: #228B22; 
-            color: white; 
-            padding: 12px 30px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .btn-green:hover { 
-            background-color: #1a6b1a; 
-            border-color: #1a6b1a; 
-            color: white;
-        }
+        .btn-green { background-color: #32CD32; border-color: #32CD32; color: white; }
+        .btn-green:hover { background-color: #228B22; border-color: #228B22; }
         
         .hero-about {
             position: relative;
@@ -170,20 +160,45 @@
                         <li class="nav-item"><a class="nav-link" href="/about">Tentang Kami</a></li>
                         <li class="nav-item"><a class="nav-link" href="/services">Layanan Kami</a></li>
                         <li class="nav-item"><a class="nav-link" href="/forum">Forum Komunitas</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                Dashboard
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/dashboard">Dashboard Monitoring</a></li>
-                                <li><a class="dropdown-item" href="/dashboard">Pencatatan Digital</a></li>
-                                <li><a class="dropdown-item" href="/database-ternak">Database Ternak</a></li>
-                                <li><a class="dropdown-item" href="/notifications">Notifikasi</a></li>
-                                <li><a class="dropdown-item" href="/forum">Forum Komunitas</a></li>
-                                <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
-                            </ul>
-                        </li>
                         <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                    Dashboard
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/dashboard">Dashboard Monitoring</a></li>
+                                    <li><a class="dropdown-item" href="/recording">Pencatatan Digital</a></li>
+                                    <li><a class="dropdown-item" href="/database-ternak">Database Ternak</a></li>
+                                    <li><a class="dropdown-item" href="/notifications">Notifikasi</a></li>
+                                    <li><a class="dropdown-item" href="/forum">Forum Komunitas</a></li>
+                                    <li><a class="dropdown-item" href="/reports">Laporan Keuangan</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" style="margin-left: 15px;">
+                                    <i class="fas fa-user-circle me-1"></i>{{ Auth::user()->name }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="/dashboard"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item text-danger">
+                                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @else
+                             <li class="nav-item">
+                            <a class="btn btn-green" href="{{ route('login') }}" style="padding: 8px 20px; border-radius: 20px; margin-left: 15px;">
+                                <i class="fas fa-sign-in-alt me-1"></i>Login
+                            </a>
+                        </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
